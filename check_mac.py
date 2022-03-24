@@ -13,7 +13,7 @@ for i in range(0,len(lines)):
 #khai báo 2 switch
 sw_user1={
         		'device_type': 'cisco_ios',
-        		'ip': '192.168.177.131',
+        		'ip': '192.168.177.100',
         		'username': 'admin',
         		'password': 'cisco',
         		'secret': 'cisco',
