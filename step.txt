@@ -1,0 +1,5 @@
+git init
+git add step.py
+git commit -m "step"
+git remote add master "https://github.com/vovinhss/LVTN.git"
+git push master
