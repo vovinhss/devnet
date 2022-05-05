@@ -1,0 +1,131 @@
+Building configuration...
+
+Current configuration : 1364 bytes
+!
+! Last configuration change at 15:56:10 EET Thu May 5 2022 by admin
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+bsd-client server url https://cloudsso.cisco.com/as/token.oauth2
+clock timezone EET 2 0
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip domain name vovinh
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+cts logging verbose
+!
+!
+username admin privilege 15 password 7 02050D480809
+!
+redundancy
+!
+!
+ip ssh version 2
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.1 255.255.255.255
+ ip ospf 1 area 0
+!
+interface Ethernet0/0
+ ip address 192.168.12.1 255.255.255.252
+ ip ospf 1 area 0
+!
+interface Ethernet0/1
+ ip address 192.168.13.1 255.255.255.252
+ ip ospf 1 area 0
+!
+interface Ethernet0/2
+ ip address 192.168.17.1 255.255.255.252
+ ip ospf 1 area 3
+!
+interface Ethernet0/3
+ ip address 192.168.10.41 255.255.255.0
+!
+router ospf 1
+ area 3 virtual-link 10.0.0.8
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ logging synchronous
+ login local
+ transport input ssh
+!
+!
+end
